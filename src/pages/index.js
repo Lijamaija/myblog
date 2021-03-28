@@ -1,29 +1,56 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql} from "gatsby"
+import styled from 'styled-components'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const BlogLink = styled(link)`
+text-decoration:none
+`
+const BlogTitle = styled.h3`
+margin-bottom: 20px;
+color: blue;`
+export default ({data}) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
+    <div>
+      <h1>Eliza's thoughts</h1>
+      <h4>{data.allMarkdownRemark.totalCount}</h4>
+      {
+        data.allMarkdownRemark.edges.map(({node}) => (
+          <div key={node.id}>
+            <BlogLink to={node.fields.slug}>
+          <span>{node.frontmatter.title} - {node.frontmatter.date}</span>
+          </BlogLink>
+          <p>{node.excerpt}</p>
+          </div>
+        ))
+      }
+    </div>
+
+   
   </Layout>
 )
 
-export default IndexPage
+export const query = graphql`
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD MMMM, YYYY")
+            description
+          }
+          fields {
+            slug
+          }
+          excerpt(truncate: true)
+        }
+      }
+    }
+  }
+`
