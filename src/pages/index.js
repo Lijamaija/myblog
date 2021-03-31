@@ -1,16 +1,17 @@
 import * as React from "react"
-import { graphql} from "gatsby"
+import { graphql, Link} from "gatsby"
 import styled from 'styled-components'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogLink = styled(link)`
+const BlogLink = styled(Link)`
 text-decoration:none
 `
 const BlogTitle = styled.h3`
 margin-bottom: 20px;
 color: blue;`
+
 export default ({data}) => (
   <Layout>
     <SEO title="Home" />
