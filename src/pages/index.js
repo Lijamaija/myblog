@@ -1,39 +1,48 @@
-import * as React from "react"
-import { graphql, Link} from "gatsby"
-import styled from 'styled-components'
-
+import React from "react"
+import { graphql, Link } from "gatsby"
+import styled from "styled-components"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+
+const Title = styled.h1`
+  display: inline-block;
+`
+
+const BlogTitle = styled.h3`
+  margin-bottom: 20px;
+  &:hover {
+    color: #1dcaff;
+  }
+`
 
 const BlogLink = styled(Link)`
-text-decoration:none
+  text-decoration: none;
+  color: inherit;
 `
-const BlogTitle = styled.h3`
-margin-bottom: 20px;
-color: blue;`
 
-export default ({data}) => (
-  <Layout>
-    <SEO title="Home" />
-    <div>
-      <h1>Eliza's thoughts</h1>
-      <h4>{data.allMarkdownRemark.totalCount}</h4>
-      {
-        data.allMarkdownRemark.edges.map(({node}) => (
-          <div key={node.id}>
+const BlogBody = styled.div`
+  margin-bottom: 50px;
+`
+
+export default ({ data }) => {
+  return (
+    <Layout>
+      <div>
+        <Title>Eliza's thoughts</Title>
+        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <BlogBody key={node.id}>
             <BlogLink to={node.fields.slug}>
-          <span>{node.frontmatter.title} - {node.frontmatter.date}</span>
-          </BlogLink>
-          <p>{node.excerpt}</p>
-          </div>
-        ))
-      }
-    </div>
-
-   
-  </Layout>
-)
-
+              <BlogTitle>
+                {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
+              </BlogTitle>
+            </BlogLink>
+            <p>{node.frontmatter.description}</p>
+          </BlogBody>
+        ))}
+      </div>
+    </Layout>
+  )
+}
 export const query = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
