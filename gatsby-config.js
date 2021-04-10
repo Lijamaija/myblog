@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Everything Tech`,
-    author: `@gatsbyjs`,
+    author: `timofeli`,
     
   },
   plugins: [

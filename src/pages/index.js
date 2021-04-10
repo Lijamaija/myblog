@@ -2,6 +2,8 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
+import Particles from "react-particles-js"
+
 
 const Title = styled.h1`
   display: inline-block;
@@ -26,6 +28,7 @@ const BlogBody = styled.div`
 export default ({ data }) => {
   return (
     <Layout>
+      
       <div>
         <Title>Eliza's thoughts</Title>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
@@ -40,6 +43,9 @@ export default ({ data }) => {
           </BlogBody>
         ))}
       </div>
+      <Particles/>
+
+
     </Layout>
   )
 }
