@@ -3,10 +3,12 @@ import PropTypes from "prop-types"
 import React from "react"
 
 const Header = ({ siteTitle }) => (
-  <header
+  <header 
     style={{
-     
-      marginBottom: `1.45rem`,
+      marginBottom:`0.45rem`,
+      backgroundColor:`black`,
+      float:`right`,
+      boxSizing:`content-box`
     }}
   >
     <div
@@ -22,6 +24,9 @@ const Header = ({ siteTitle }) => (
           style={{
             color: `white`,
             textDecoration: `none`,
+            fontSize:`30px`,
+            background: `black`,
+            borderRadius: `30%`
           }}
         >
           {siteTitle}

@@ -30,8 +30,17 @@ export default ({ data }) => {
     <Layout>
       
       <div>
-        <Title>Eliza's thoughts</Title>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        <Title style={{
+            marginTop: `3rem`,
+            background: `black`,
+            borderRadius: `30%`
+            
+          
+           
+          }}>Eliza's thoughts</Title>
+        <h4 style={{
+       
+          }}>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <BlogBody key={node.id}>
             <BlogLink to={node.fields.slug}>
