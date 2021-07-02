@@ -1,6 +1,7 @@
 ---
 title: "Huge files processing and conversion to parquet format"
 date: "2021-04-09"
+description: "Key moments when working with csv files, python and conversion"
 ---
 
 ### Pandas, pyarrow, pyspark and dask comparison.
