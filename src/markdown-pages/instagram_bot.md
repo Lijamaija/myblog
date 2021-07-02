@@ -14,7 +14,7 @@ The script uses a few important technologies that you have to have preinstalled 
 
 In order to write this script, you have to be able to access different elements of the webpage and there are numerous ways to do this.
 First of all, selenium browser automation documentation. You can find out more on official resources: https://www.selenium.dev/documentation/en/webdriver/web_element/
-Typically, you're using instance of active browser(driver) and applying different functions on it, such as  find_element(By.NAME), then older versions such as find_element_by_css_selector, and finally option that I found the most convenient - find_element_by_xpath("//button[text()='Accept']").
+>Typically, you're using instance of active browser(driver) and applying different functions on it, such as  find_element(By.NAME), then older versions such as find elemen by css selector, and finally option that I found the most convenient - find element by xpath("//button[text()='Accept']").
 It gives you the exact element without much hassle of looking for similar HTML components. 
 
 **How to find XPATH?**
